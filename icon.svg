@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="case" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d3038"/>
+      <stop offset="100%" stop-color="#16181c"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1c15"/>
+      <stop offset="100%" stop-color="#081310"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d99a4e"/>
+      <stop offset="100%" stop-color="#b97f38"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#case)"/>
+  <rect x="18" y="18" width="92" height="34" rx="8" fill="url(#screen)"/>
+  <text x="102" y="42" text-anchor="end" font-family="Arial, sans-serif" font-size="18" fill="#92ffc0">128</text>
+  <g fill="none" stroke="#3a3d44" stroke-width="1">
+    <rect x="18" y="60" width="20" height="16" rx="4" fill="#2c2f36"/>
+    <rect x="44" y="60" width="20" height="16" rx="4" fill="#2c2f36"/>
+    <rect x="70" y="60" width="20" height="16" rx="4" fill="#2c2f36"/>
+  </g>
+  <rect x="96" y="60" width="14" height="50" rx="6" fill="url(#copper)"/>
+  <g fill="#2c2f36">
+    <rect x="18" y="82" width="20" height="16" rx="4"/>
+    <rect x="44" y="82" width="20" height="16" rx="4"/>
+    <rect x="70" y="82" width="20" height="16" rx="4"/>
+    <rect x="18" y="104" width="46" height="16" rx="4"/>
+    <rect x="70" y="104" width="20" height="16" rx="4"/>
+  </g>
+</svg>

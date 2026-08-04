@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Premium Calculator — Fast, Elegant, Works Offline</title>
+<meta name="description" content="A premium calculator with scientific mode, calculation history, light and dark themes, full keyboard support, and offline installability on any device.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a1c20">
+<meta property="og:title" content="Premium Calculator">
+<meta property="og:description" content="A fast, elegant calculator with scientific mode, history, and light/dark themes. Installable and works offline.">
+<meta property="og:type" content="website">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<main class="stage">
+  <div class="app" id="app">
+
+    <div class="toolbar">
+      <button class="tool-btn" id="historyToggle" aria-label="Calculation history" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 2"></path>
+        </svg>
+      </button>
+
+      <button class="tool-btn tool-btn--angle" id="angleToggle" aria-label="Toggle degrees or radians" hidden>
+        <span id="angleLabel">DEG</span>
+      </button>
+
+      <button class="tool-btn tool-btn--mode" id="modeToggle" aria-label="Toggle scientific mode">
+        <span id="modeLabel">SCI</span>
+      </button>
+
+      <button class="tool-btn" id="themeToggle" aria-label="Toggle light or dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4.2"></circle>
+          <path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"></path>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4 6.8 6.8 0 0 0 20 14.5Z"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="calculator" id="calculator">
+
+      <div class="screen">
+        <div class="screen__glass"></div>
+        <div class="screen__row">
+          <span class="mem-indicator" id="memIndicator" aria-hidden="true">M</span>
+          <div class="expression" id="expression" aria-live="off"></div>
+        </div>
+        <div class="result" id="result" aria-live="polite">0</div>
+      </div>
+
+      <div class="keys keys--scientific" id="sciKeys" hidden>
+        <button class="key key--sci" data-sci="sin">sin</button>
+        <button class="key key--sci" data-sci="cos">cos</button>
+        <button class="key key--sci" data-sci="tan">tan</button>
+        <button class="key key--sci" data-sci="sqrt">√x</button>
+
+        <button class="key key--sci" data-sci="square">x²</button>
+        <button class="key key--sci key--op" data-action="power">xʸ</button>
+        <button class="key key--sci" data-sci="ln">ln</button>
+        <button class="key key--sci" data-sci="log">log</button>
+
+        <button class="key key--sci" data-sci="pi">π</button>
+        <button class="key key--sci" data-sci="e">e</button>
+        <button class="key key--sci" data-sci="inv">1/x</button>
+        <button class="key key--sci" data-sci="fact">n!</button>
+      </div>
+
+      <div class="keys" id="keys">
+
+        <button class="key key--mem" data-action="mc" aria-label="Memory clear">MC</button>
+        <button class="key key--mem" data-action="mr" aria-label="Memory recall">MR</button>
+        <button class="key key--mem" data-action="m-minus" aria-label="Memory subtract">M−</button>
+        <button class="key key--mem" data-action="m-plus" aria-label="Memory add">M+</button>
+
+        <button class="key key--func" data-action="clear" aria-label="All clear">AC</button>
+        <button class="key key--func" data-action="sign" aria-label="Toggle sign">+/−</button>
+        <button class="key key--func" data-action="percent" aria-label="Percent">%</button>
+        <button class="key key--op" data-action="divide" aria-label="Divide">÷</button>
+
+        <button class="key key--num" data-num="7">7</button>
+        <button class="key key--num" data-num="8">8</button>
+        <button class="key key--num" data-num="9">9</button>
+        <button class="key key--op" data-action="multiply" aria-label="Multiply">×</button>
+
+        <button class="key key--num" data-num="4">4</button>
+        <button class="key key--num" data-num="5">5</button>
+        <button class="key key--num" data-num="6">6</button>
+        <button class="key key--op" data-action="subtract" aria-label="Subtract">−</button>
+
+        <button class="key key--num" data-num="1">1</button>
+        <button class="key key--num" data-num="2">2</button>
+        <button class="key key--num" data-num="3">3</button>
+        <button class="key key--op" data-action="add" aria-label="Add">+</button>
+
+        <button class="key key--num" data-num="0">0</button>
+        <button class="key key--num" data-action="decimal">.</button>
+        <button class="key key--func" data-action="backspace" aria-label="Backspace">⌫</button>
+        <button class="key key--equals" data-action="equals" aria-label="Equals">=</button>
+
+      </div>
+    </div>
+  </div>
+
+  <aside class="history-drawer" id="historyDrawer" aria-hidden="true">
+    <div class="history-drawer__header">
+      <h2>History</h2>
+      <button class="history-clear" id="historyClear">Clear</button>
+    </div>
+    <ul class="history-list" id="historyList"></ul>
+    <p class="history-empty" id="historyEmpty">No calculations yet.</p>
+  </aside>
+  <div class="history-backdrop" id="historyBackdrop"></div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
